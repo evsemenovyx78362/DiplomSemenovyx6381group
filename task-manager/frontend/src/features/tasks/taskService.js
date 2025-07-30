@@ -24,9 +24,23 @@ const updateTask = async (taskData, token) => {
     return response.data;
 }
 
+// Создать новую задачу
+const createTask = async (taskData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.post(API_URL, taskData, config); // Отправляем данные новой задачи
+  return response.data;
+};
+
+
 const taskService = {
   getTasks,
   updateTask,
+  createTask, // Добавляем новую функцию
 };
 
 export default taskService;
+
